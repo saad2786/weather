@@ -35,6 +35,7 @@ app.post('/', function (req, res) {
         icon = weatherdata.weather[0].icon
         imgURL = 'http://openweathermap.org/img/wn/' + icon + '@2x.png'
         weatherdisc = weatherdata.weather[0].description
+
         res.redirect('/weather')
       }
       catch(err)
@@ -49,11 +50,14 @@ app.post('/', function (req, res) {
   })
 })
 app.get('/weather', function (req, res) {
+  var imageBg = "images/"+icon+".jpg"
+  
   res.render('details', {
     weatherdisc: weatherdisc,
     imgURL: imgURL,
     city: city,
     temp: temp,
+    icon: imageBg
   })
 })
 app.get('/invalid', function (req, res) {
